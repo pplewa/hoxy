@@ -200,8 +200,8 @@ export default class Proxy extends EventEmitter {
 
     if (opts.certAuthority) {
 
-      let { key, cert } = opts.certAuthority
-        , spoofer = new SNISpoofer(key, cert)
+      let { key, cert, altNames } = opts.certAuthority
+        , spoofer = new SNISpoofer(key, cert, altNames)
         , SNICallback = spoofer.callback()
         , cxnEstablished = new Buffer(`HTTP/1.1 200 Connection Established\r\n\r\n`, 'ascii')
 
